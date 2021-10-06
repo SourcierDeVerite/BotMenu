@@ -102,6 +102,8 @@ async def on_ready():
 async def ping(ctx):
 	print("Un utilisateur à utilisé la commande Ping")
 	await ctx.message.delete()
+	
+	print("Bonjour Paul")
 
 	await ctx.send(f"Mon ping est de {round(bot.latency * 1000)} ms")
 
