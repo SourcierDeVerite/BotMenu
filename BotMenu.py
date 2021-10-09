@@ -94,8 +94,9 @@ bot = commands.Bot(command_prefix=";")
 
 @bot.event
 async def on_ready():
-	print("\nLe bot est connecté ! \n")
+	print("\nLe bot est connecté! \n")
 	await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=';menu'))
+	print("Salut")
 
 @bot.command(name="ping")
 async def ping(ctx):
