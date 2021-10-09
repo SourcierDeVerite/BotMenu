@@ -10,7 +10,6 @@ from bs4 import BeautifulSoup
 from discord.ext import commands
 from discord.ext.commands import MissingPermissions
 
-
 # Recupérer la date
 def voirdate ():
 	global date
