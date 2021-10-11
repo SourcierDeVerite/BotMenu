@@ -5,6 +5,5 @@
 ############
 *.env
 node_modules
-.vscode
+*.vscode
 *.bat
-*.gitignore
