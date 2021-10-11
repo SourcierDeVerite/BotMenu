@@ -41,6 +41,6 @@ Thumbs.db
 
 # My stuff #
 ############
-.env
+*.env
 node_modules
 .vscode
