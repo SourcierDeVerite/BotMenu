@@ -102,9 +102,9 @@ async def ping(ctx):
 	print("Un utilisateur à utilisé la commande Ping")
 	await ctx.message.delete()
 
-	ping = "**" + str(round(bot.latency * 1000)) + "**"
+	message = f"Mon ping est de " + str(round(bot.latency * 1000))
 
-	embed = discord.Embed(title="Mon ping est de ",description = ping, color=discord.Color.red())
+	embed = discord.Embed(title=message, color=discord.Color.red())
 	embed.set_author(name="Crous", icon_url="https://upload.wikimedia.org/wikipedia/commons/b/b5/Crous_logo.jpg")
 
 	await ctx.send(embed=embed)
