@@ -102,17 +102,22 @@ async def ping(ctx):
 	print("Un utilisateur à utilisé la commande Ping")
 	await ctx.message.delete()
 
-	await ctx.send(f"Mon ping est de {round(bot.latency * 1000)} ms")
+	ping = "**" + str(round(bot.latency * 1000)) + "**"
+
+	embed = discord.Embed(title="Mon ping est de ",description = ping, color=discord.Color.red())
+	embed.set_author(name="Crous", icon_url="https://upload.wikimedia.org/wikipedia/commons/b/b5/Crous_logo.jpg")
+
+	await ctx.send(embed=embed)
 
 @bot.command(name="menu")
 async def menu(ctx):
+
 	print("Un utilisateur à utilisé la commande Menu")
 	await ctx.message.delete()
 
 	voirdate()
 	scrapping()
-
-	menu = plat + accompagnement + pizza
+	menu = plat + " " + accompagnement + " " + pizza
 
 	# Vérifier si le menu est vide (sinon erreur)
 	vide = 0
@@ -120,15 +125,19 @@ async def menu(ctx):
 		if menu[i] != "\n" : 
 			vide = 1
 			break
-	if vide == 0 : await ctx.send(f"Il n'y a pas de menu aujourd'hui")
-	else : 
+	if vide == 0 : 
+		embed = discord.Embed(title="Désolé, mais le Menu n'est pas affiché sur le site", color=discord.Color.red())
+		embed.set_author(name="Crous", icon_url="https://upload.wikimedia.org/wikipedia/commons/b/b5/Crous_logo.jpg")
+
+		await ctx.send(embed=embed)
+	else :
 		# Créer l'embed
-		embed = discord.Embed(title="Le menu d'aujourd'hui est :", description=date, color=discord.Color.red())
+		embed = discord.Embed(title="Le menu d'aujourd'hui est :", description=date,color=discord.Color.red())
 		embed.set_author(name="Crous", icon_url="https://upload.wikimedia.org/wikipedia/commons/b/b5/Crous_logo.jpg")
 		embed.add_field(name="Plat", value=plat, inline=False)
 		embed.add_field(name="Accompagnement", value=accompagnement, inline=False)
 		embed.add_field(name="Pizza", value=pizza, inline=False)
-		embed.set_footer(text="Crée par Sourcier De Vérité#1962")
+		embed.set_footer(text="Crée par Sourcier De Vérité#1962") 
 		await ctx.send(embed=embed)
 
 @bot.command(name="sup")
@@ -136,9 +145,13 @@ async def menu(ctx):
 async def sup(ctx, nombre : int):
 	await ctx.message.delete()
 	print(f"Un utilisateur à utilisé la commande Supprimer pour {nombre} message(s)")
-
+	
 	await ctx.channel.purge(limit = nombre)
-	await ctx.send(f"J'ai bien supprimé {nombre} messages", delete_after=5)
+	
+	message = f"J'ai bien supprimé {nombre} message(s)"
+	embed = discord.Embed(title=message, color=discord.Color.red())
+	embed.set_author(name="Crous", icon_url="https://upload.wikimedia.org/wikipedia/commons/b/b5/Crous_logo.jpg")
+	await ctx.send(embed=embed,delete_after=5)
 
 @bot.command(name="ban")
 @commands.has_permissions(administrator=True)
@@ -146,14 +159,22 @@ async def ban(ctx, member : discord.Member, reason=None):
 	await ctx.message.delete()
 	print(f"Un utilisateur à utilisé le commande Ban pour l'utilisateur {member}")
 
+	message = f"Le membre {member} a bien été banni"
+	embed = discord.Embed(title=message, color=discord.Color.red())
+	embed.set_author(name="Crous", icon_url="https://upload.wikimedia.org/wikipedia/commons/b/b5/Crous_logo.jpg")
+
 	await member.ban(reason = reason)
-	await ctx.send(f"Le membre {member} a bien été banni")
+	await ctx.send(embed=embed)
 
 @sup.error
 @ban.error
 async def error(ctx, error):
 	if isinstance(error, MissingPermissions):
-		await ctx.send("Vous n'avez pas la permission de faire ça")
+		message = "Vous n'avez pas la permsision de faire ça"
+		embed = discord.Embed(title=message, color=discord.Color.red())
+		embed.set_author(name="Crous", icon_url="https://upload.wikimedia.org/wikipedia/commons/b/b5/Crous_logo.jpg")
+
+		await ctx.send(embed=embed)
 
 # Lancer le bot
 bot.run(os.getenv("TOKEN"))
