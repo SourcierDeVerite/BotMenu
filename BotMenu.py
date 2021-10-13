@@ -13,8 +13,6 @@ from discord.ext.commands import MissingPermissions
 from dotenv import load_dotenv
 from bs4 import BeautifulSoup
 
-print('test')
-
 # Recupérer la date
 def voirdate ():
 	global date
