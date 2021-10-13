@@ -42,7 +42,7 @@ Thumbs.db
 # My stuff #
 ############
 
-.env
 node_modules
 !schema.sql
 .bat
+config.env
