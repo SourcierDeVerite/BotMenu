@@ -7,6 +7,7 @@ import os
 import urllib.request
 import mysql.connector
 
+
 from discord_slash import SlashCommand, SlashContext
 from discord_slash.utils.manage_commands import create_option,create_choice
 from discord.ext import commands
