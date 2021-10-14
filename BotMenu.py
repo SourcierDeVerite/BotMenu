@@ -120,7 +120,7 @@ guild_ids=[715926570795008010,872202739046830080,763456598697705472,887273660254
 @bot.event
 async def on_ready():
 	print("\nLe bot est connecté ! \n")
-	await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name='/menu'))
+	await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name='/help'))
 
 @slash.slash(name="Ping", description="Envoie le ping du bot", guild_ids=guild_ids)
 async def ping(ctx):
@@ -153,7 +153,7 @@ async def menu(ctx):
 		embed = embedmenu(plat, accompagnement, pizza, date)
 		await ctx.send(embed=embed)
 
-@slash.slash(name="sup", description="Supprimer des messages", guild_ids=guild_ids, options = [create_option(name="nombre",description="Nombre de message à supprimer",required=True,option_type=4)])
+@slash.slash(name="Sup", description="Supprimer des messages", guild_ids=guild_ids, options = [create_option(name="nombre",description="Nombre de message à supprimer",required=True,option_type=4)])
 @commands.has_permissions(manage_messages=True)
 async def sup(ctx, nombre : int):
 	print(f"Un utilisateur à utilisé la commande Supprimer pour {nombre} message(s)")
@@ -164,7 +164,7 @@ async def sup(ctx, nombre : int):
 
 	await ctx.send(embed=embed,delete_after=5)
 
-@slash.slash(name="ban", description="Bannir un membre", guild_ids=guild_ids, options = [create_option(name="membre",description="Membre à ban",required=True,option_type=6)])
+@slash.slash(name="Ban", description="Bannir un membre", guild_ids=guild_ids, options = [create_option(name="membre",description="Membre à ban",required=True,option_type=6)])
 @commands.has_permissions(administrator=True)
 async def ban(ctx, membre, reason=None):
 	print(f"Un utilisateur à utilisé le commande Ban pour l'utilisateur {membre}")
@@ -175,6 +175,13 @@ async def ban(ctx, membre, reason=None):
 	embed=embedsimple(message)
 
 	await ctx.send(embed=embed)
+
+@slash.slash(name="Help", description="test", guild_ids=guild_ids)
+async def help(ctx):
+
+	print(f"Un utilisateur à utilisé le commande Help")
+
+	await ctx.send(embed=embedhelp())
 
 @sup.error
 @ban.error
