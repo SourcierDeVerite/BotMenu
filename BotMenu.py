@@ -108,6 +108,18 @@ def embedmenu(plat,accompagnement,pizza,date):
 	embed.set_footer(text="Crée par Sourcier De Vérité#1962")
 	return embed
 
+# Creer un embed pour la commande help
+def embedhelp():
+	embed = discord.Embed(title="Voici les commandes disponibles :",color=discord.Color.red())
+	embed.set_author(name="Crous", icon_url="https://upload.wikimedia.org/wikipedia/commons/b/b5/Crous_logo.jpg")
+	embed.add_field(name="Ping", value="Permet d'obtenir le ping du bot", inline=False)
+	embed.add_field(name="Menu", value="Permet d'envoyer le menu d'aujourd'hui", inline=False)
+	embed.add_field(name="Sup x", value="Permet de supprimer x messages (Reservé au Admin)", inline=False)
+	embed.add_field(name="Ban x", value="Permet de bannir un membre (Reservé au Admin)", inline=False)
+	embed.set_footer(text="Crée par Sourcier De Vérité#1962")
+	
+	return embed
+	
 # Récupérer le Token dans le fichier config.env
 load_dotenv(dotenv_path="config.env")
 
