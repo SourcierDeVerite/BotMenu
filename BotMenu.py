@@ -1,4 +1,4 @@
-# https://bit.ly/3mIYH9b
+# https://bit.ly/2YM69Ia
 # Importation des modules
 import discord
 import datetime
