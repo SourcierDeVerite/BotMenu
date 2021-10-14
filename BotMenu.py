@@ -112,7 +112,7 @@ def embedmenu(plat,accompagnement,pizza,date):
 load_dotenv(dotenv_path="config.env")
 
 # Initialiser le bot
-bot = commands.Bot(command_prefix=":", help_command=None)
+bot = commands.Bot(command_prefix=";", help_command=None)
 slash = SlashCommand(bot, sync_commands=True)
 guild_ids=[715926570795008010,872202739046830080,763456598697705472,887273660254138419]
 #guild_ids=[715926570795008010]
