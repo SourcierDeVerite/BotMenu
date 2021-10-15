@@ -188,7 +188,7 @@ async def ban(ctx, membre, reason=None):
 
 	await ctx.send(embed=embed)
 
-@slash.slash(name="Help", description="test", guild_ids=guild_ids)
+@slash.slash(name="Help", description="Donne toutes les commandes disponibles", guild_ids=guild_ids)
 async def help(ctx):
 
 	print(f"Un utilisateur à utilisé le commande Help")
