@@ -138,7 +138,7 @@ async def on_ready():
 async def ping(ctx):
 	print("Un utilisateur à utilisé la commande Ping")
 
-	message = "Mon ping est de " + str(round(bot.latency * 1000))
+	message = "Mon ping est de " + str(round(bot.latency * 1000)) + "ms"
 	embed = embedsimple(message)
 
 	await ctx.reply(embed=embed)
