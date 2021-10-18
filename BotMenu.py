@@ -53,8 +53,6 @@ def scrapping():
 	# Transformer le code source en str
 	codesource = str(codesource)
 
-	date ="5 octobre 2021"
-
 	# Séparer la date que l'on veux 
 	debut = codesource.find(date)
 	codesource = codesource[debut:]
@@ -151,19 +149,12 @@ async def menu(ctx):
 	scrapping()
 	menu = plat + " " + accompagnement + " " + pizza
 
-	# Vérifier si le menu est vide (sinon erreur)
-	vide = 0
-	for i in range (0,len(menu)):
-		if menu[i] != "\n" : 
-			vide = 1
-			break
-	if vide == 0 : 
+	# Vérifier si le menu est vide
+	if menu.isspace() : 
 		message = "Désolé, mais le Menu n'est pas affiché sur le site"
-		embed = embedsimple(message)
-		await ctx.send(embed=embed)
+		await ctx.send(embed=embedsimple(message))
 	else :
-		embed = embedmenu(plat, accompagnement, pizza, date)
-		await ctx.send(embed=embed)
+		await ctx.send(embed=embedmenu(plat, accompagnement, pizza, date))
 
 @slash.slash(name="Sup", description="Supprimer des messages", guild_ids=guild_ids, options = [create_option(name="nombre",description="Nombre de message à supprimer",required=True,option_type=4)])
 @commands.has_permissions(manage_messages=True)
