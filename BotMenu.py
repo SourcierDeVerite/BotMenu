@@ -186,6 +186,10 @@ async def help(ctx):
 
 	await ctx.send(embed=embedhelp())
 
+@slash.slash(name="Say", description="Dire un message", guild_ids=guild_ids, options = [create_option(name="message",description="Message à envoyer",required=True,option_type=3)])
+async def say(ctx, message : str):
+	await ctx.send(message)
+
 @sup.error
 @ban.error
 async def error(ctx, error):
