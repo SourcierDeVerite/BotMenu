@@ -114,6 +114,7 @@ def embedhelp():
 	embed.add_field(name="Menu", value="Permet d'envoyer le menu d'aujourd'hui", inline=False)
 	embed.add_field(name="Sup x", value="Permet de supprimer x messages (Reservé au Admin)", inline=False)
 	embed.add_field(name="Ban x", value="Permet de bannir un membre (Reservé au Admin)", inline=False)
+	embed.add_field(name="Say x", value="Permet de faire dire au bot un message", inline=False)
 	embed.set_footer(text="Crée par Sourcier De Vérité#1962")
 	
 	return embed
