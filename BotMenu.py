@@ -157,16 +157,24 @@ async def menu(ctx):
 	else :
 		await ctx.send(embed=embedmenu(plat, accompagnement, pizza, date))
 
-@slash.slash(name="Sup", description="Supprimer des messages", guild_ids=guild_ids, options = [create_option(name="nombre",description="Nombre de message à supprimer",required=True,option_type=4)])
-@commands.has_permissions(manage_messages=True)
+@slash.slash(name = "Sup", description = "Supprimer des messages", guild_ids = guild_ids, options = [create_option(name = "nombre", description = "Nombre de message à supprimer (0 pour tout supprimer)", required = True, option_type = 4)])
+@commands.has_permissions(administrator = True)
 async def sup(ctx, nombre : int):
-	print(f"Un utilisateur à utilisé la commande Supprimer pour {nombre} message(s)")
-	
-	await ctx.channel.purge(limit = nombre)
-	message = "J'ai bien supprimé " + str(nombre) + " message(s)"
-	embed = embedsimple(message)
+	if nombre == 0 : 
+		print(f"Un utilisateur à utilisé la commande Supprimer le salon #{ctx.channel}")
 
-	await ctx.send(embed=embed,delete_after=5)
+		newchannel = await (ctx.channel).clone()
+		await(ctx.channel).delete()
+		message = "J'ai bien vidé le channel #" + str(newchannel)
+
+		await newchannel.send(embed=embedsimple(message),delete_after=5)
+	else : 
+		print(f"Un utilisateur à utilisé la commande Supprimer pour {nombre} message(s)")
+	
+		await ctx.channel.purge(limit = nombre)
+		message = "J'ai bien supprimé " + str(nombre) + " message(s)"
+
+		await ctx.send(embed=embedsimple(message),delete_after=5)
 
 @slash.slash(name="Ban", description="Bannir un membre", guild_ids=guild_ids, options = [create_option(name="membre",description="Membre à ban",required=True,option_type=6)])
 @commands.has_permissions(administrator=True)
