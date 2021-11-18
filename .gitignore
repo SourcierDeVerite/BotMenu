@@ -4,6 +4,9 @@ config.env
 *.bat
 *.gitignore
 *.mp3
+package.json
+package-lock.json
+launch.json
 =======
 # Compiled source #
 ###################
