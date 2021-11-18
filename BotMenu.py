@@ -145,16 +145,19 @@ async def ping(ctx):
 async def menu(ctx):
 	print("Un utilisateur à utilisé la commande Menu")
 
-	voirdate()
-	scrapping()
-	menu = plat + " " + accompagnement + " " + pizza
-
-	# Vérifier si le menu est vide
-	if menu.isspace() : 
+	try :
+		voirdate()
+		scrapping()
+	except urllib.error.HTTPError:
+		message = "Désolé, mais le site du Crous est inaccessible pour l'instant"
+		await ctx.send(embed=embedsimple(message))
+	except menu.isspace(): 
 		message = "Désolé, mais le Menu n'est pas affiché sur le site"
 		await ctx.send(embed=embedsimple(message))
 	else :
+		menu = plat + " " + accompagnement + " " + pizza
 		await ctx.send(embed=embedmenu(plat, accompagnement, pizza, date))
+
 
 @slash.slash(name = "Sup", description = "Supprimer des messages", guild_ids = guild_ids, options = [create_option(name = "nombre", description = "Nombre de message à supprimer (0 pour tout supprimer)", required = True, option_type = 4)])
 @commands.has_permissions(administrator = True)
