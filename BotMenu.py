@@ -125,7 +125,7 @@ load_dotenv(dotenv_path="config.env")
 # Initialiser le bot
 bot = commands.Bot(command_prefix=";", help_command=None)
 slash = SlashCommand(bot, sync_commands=True)
-guild_ids=[715926570795008010,872202739046830080,763456598697705472,887273660254138419,328486960664412160]
+guild_ids=[715926570795008010,872202739046830080,763456598697705472,887273660254138419,328486960664412160, 905800798838063165]
 
 @bot.event
 async def on_ready():
