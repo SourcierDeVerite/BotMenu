@@ -60,14 +60,15 @@ def scrapping():
 
 	codesource = codesource[0:fin]
 
-	# Créer une liste contenant l'alphabet en majuscule
-	alphabetmaj = []
-	for i in range(26):
-		alphabetmaj.append(chr(65+i))
+	alphabetmaj = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
 
-	# Aller à la ligne dès qu'il y a une majuscule
-	for i in range(len(alphabetmaj)):
+	codesource = codesource.replace("VG", "vg")
+
+	#Aller à la ligne dès qu'il y a une majuscule
+	for i in range(25):
 		codesource = codesource.replace(alphabetmaj[i],"\n" + alphabetmaj[i])
+
+	codesource = codesource.replace("vg", "VG")
 
 	# Séparer les plats du reste
 	debutplat = codesource.find("Plats")
@@ -155,7 +156,6 @@ async def menu(ctx):
 		message = "Désolé, mais le Menu n'est pas affiché sur le site"
 		await ctx.send(embed=embedsimple(message))
 	else :
-		menu = plat + " " + accompagnement + " " + pizza
 		await ctx.send(embed=embedmenu(plat, accompagnement, pizza, date))
 
 
