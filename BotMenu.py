@@ -146,16 +146,17 @@ async def ping(ctx):
 async def menu(ctx):
 	print("Un utilisateur à utilisé la commande Menu")
 
-	try :
-		voirdate()
-		scrapping()
-	except urllib.error.HTTPError:
+	voirdate()
+	scrapping()
+	menu = plat + accompagnement + pizza
+
+	if urllib.error.HTTPError:
 		message = "Désolé, mais le site du Crous est inaccessible pour l'instant"
 		await ctx.send(embed=embedsimple(message))
-	except menu.isspace(): 
+	elif menu.isspace() or len(menu) == 0 or menu == "" or not menu: 
 		message = "Désolé, mais le Menu n'est pas affiché sur le site"
 		await ctx.send(embed=embedsimple(message))
-	else :
+	else:
 		await ctx.send(embed=embedmenu(plat, accompagnement, pizza, date))
 
 
