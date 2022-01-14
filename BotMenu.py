@@ -56,8 +56,7 @@ def scrapping():
 	# Séparer la date que l'on veux 
 	debut = codesource.find(date)
 	codesource = codesource[debut:]
-	fin = codesource.find("Menu")
-
+	fin = codesource.find("Dîner")
 	codesource = codesource[0:fin]
 
 	alphabetmaj = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
@@ -146,18 +145,19 @@ async def ping(ctx):
 async def menu(ctx):
 	print("Un utilisateur à utilisé la commande Menu")
 
-	voirdate()
-	scrapping()
-	menu = plat + accompagnement + pizza
-
-	if urllib.error.HTTPError:
+	try:
+		voirdate()
+		scrapping()
+		menu = plat + accompagnement + pizza
+		await ctx.send(embed=embedmenu(plat, accompagnement, pizza, date))
+	
+	except urllib.error.HTTPError as exception:
 		message = "Désolé, mais le site du Crous est inaccessible pour l'instant"
 		await ctx.send(embed=embedsimple(message))
-	elif menu.isspace() or len(menu) == 0 or menu == "" or not menu: 
+	
+	except menu.isspace() or len(menu) == 0 or menu == "" or not menu:
 		message = "Désolé, mais le Menu n'est pas affiché sur le site"
 		await ctx.send(embed=embedsimple(message))
-	else:
-		await ctx.send(embed=embedmenu(plat, accompagnement, pizza, date))
 
 
 @slash.slash(name = "Sup", description = "Supprimer des messages", guild_ids = guild_ids, options = [create_option(name = "nombre", description = "Nombre de message à supprimer (0 pour tout supprimer)", required = True, option_type = 4)])
