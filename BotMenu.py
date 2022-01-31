@@ -6,7 +6,6 @@ import time
 import os
 import urllib.request
 
-
 from discord_slash import SlashCommand, SlashContext
 from discord_slash.utils.manage_commands import create_option,create_choice
 from discord.ext import commands
@@ -159,7 +158,6 @@ async def menu(ctx):
 	except menu.isspace() or len(menu) == 0 or menu == "" or not menu:
 		message = "Désolé, mais le Menu n'est pas affiché sur le site"
 		await ctx.send(embed=embedsimple(message))
-
 
 @slash.slash(name = "Sup", description = "Supprimer des messages", guild_ids = guild_ids, options = [create_option(name = "nombre", description = "Nombre de message à supprimer (0 pour tout supprimer)", required = True, option_type = 4)])
 @commands.has_permissions(administrator = True)
