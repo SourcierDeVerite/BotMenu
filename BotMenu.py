@@ -30,7 +30,7 @@ def connexionBDD():
 	global bdd
 	try:
 		bdd = mysql.connector.connect(
-			user = "bot",
+			user = "botmenu",
 			password = os.getenv("mdpBDD"),
 			host = "localhost",
 			database = "botmenu"
