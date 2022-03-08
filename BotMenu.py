@@ -1,7 +1,6 @@
 # https://bit.ly/2YM69Ia
 import discord
 import datetime
-import time
 import os
 import urllib.request
 import mysql.connector
