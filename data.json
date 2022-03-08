@@ -1,0 +1,44 @@
+{
+    "restaurant": [{
+            "nom": "Restaurant 1",
+            "lien": "https://www.crous-normandie.fr/restaurant/restaurant-a/",
+            "lieu": "Caen Campus 1",
+            "categorie": ["Végétarien", "Viandes", "Poissons", "Pizzas et snacking", "Légumes/accompagnement"]
+        },
+
+        {
+            "nom": "Cafeteria La Parenthese",
+            "lien": "https://www.crous-normandie.fr/restaurant/cafeteria-la-parenthese/",
+            "lieu": "Caen Campus 1",
+            "categorie": ["Entrées", "Snacking", "Plats du jour", "Desserts"]
+        },
+
+        {
+            "nom": "Restaurant Ifs",
+            "lien": "https://www.crous-normandie.fr/restaurant/restaurant-ifs/",
+            "lieu": "Caen Campus 3",
+            "categorie": ["Plats", "Accompagnements"]
+        },
+
+        {
+            "nom": "RU Claude Bloch",
+            "lien": "https://www.crous-normandie.fr/restaurant/ru-claude-bloch/",
+            "lieu": "Caen Campus 4",
+            "categorie": ["Plats", "Accompagnements", "Pizzas et snacking"]
+        },
+
+        {
+            "nom": "Cafeteria du CHU",
+            "lien": "https://www.crous-normandie.fr/restaurant/cafeteria-du-chu/",
+            "lieu": "Caen Campus 5",
+            "categorie": ["Entrées", "Plats du jour", "Snacking", "Desserts"]
+        },
+
+        {
+            "nom": "Cafeteria PFRS",
+            "lien": "https://www.crous-normandie.fr/restaurant/cafeteria-pfrs/",
+            "lieu": "Caen Campus 5",
+            "categorie": ["Entrées", "Plats du jour", "Desserts", "Snacking"]
+        }
+    ]
+}
