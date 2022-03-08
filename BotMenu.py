@@ -254,7 +254,7 @@ async def sync(ctx):
 		return
 
 	for guild in bot.guilds:
-		requete("INSERT INTO guild(id, name) SELECT '" + str(guild.id) + "', '" + str(guild.name) + "' FROM dual WHERE NOT EXISTS (SELECT 1 FROM guild WHERE ID = " + str(guild.id) + ");")
+		requete("INSERT IGNORE INTO guild (id, name) VALUES ('" + str(guild.id) + "','" + str(guild.name) +"');")
 	message = "Synchronisation réussi"	
 	await ctx.send(embed=embedsimple(message))
 
