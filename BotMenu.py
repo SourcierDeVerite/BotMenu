@@ -1,4 +1,5 @@
 # https://bit.ly/2YM69Ia
+from distutils.command.config import config
 import discord
 import datetime
 import time
@@ -30,10 +31,10 @@ def connexionBDD():
 	global bdd
 	try:
 		bdd = mysql.connector.connect(
-			user = "botmenu",
+			user = os.getenv("userBDD"),
 			password = os.getenv("mdpBDD"),
-			host = "localhost",
-			database = "botmenu"
+			host = os.getenv("hostBDD"),
+			database = os.getenv("database")
 			)
 
 	except mysql.connector.Error as err:
