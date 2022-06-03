@@ -1,1 +1,2 @@
-worker:set heroku/python
+web: python BotMenu.py
+worker: python BotMenu.py 
